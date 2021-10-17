@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_bkg"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/txt_start"
+        android:layout_width="205dp"
+        android:layout_height="33dp"
+        android:gravity="center"
+        android:text="@string/txt_started"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.037" />
+
+    <EditText
+        android:id="@+id/tb_email"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/casute"
+        android:ems="10"
+
+
+        android:hint="Email"
+        android:textColor="#A9F1F9"
+        android:textColorHint="#A9F1F9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_start"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/txt_forgot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/txt_forgot"
+        android:textColor="#A9F1F9"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tb_pass" />
+
+    <Button
+        android:id="@+id/btn_log"
+        android:layout_width="337dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/btn_log_rotund"
+        android:text="@string/btn_login"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/txt_forgot" />
+
+
+    <EditText
+        android:id="@+id/tb_pass"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/casute"
+        android:ems="10"
+
+        android:hint="Password"
+
+        android:minHeight="48dp"
+        android:textColor="#A9F1F9"
+        android:textColorHint="#A9F1F9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tb_email"
+        tools:ignore="TextContrastCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Cernat_Robert_fitbit</string>
+    <string name="tb_email">Email</string>
+    <string name="txt_started">Let\'s get started</string>
+    <string name="tb_password">Password</string>
+    <string name="txt_forgot">Forgot password?</string>
+    <string name="btn_login">Log in</string>
+    <string name="tb_passwordbun">Password</string>
+</resources>

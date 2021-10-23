@@ -1,5 +1,6 @@
 package com.example.cernat_robert_fitbit;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -16,6 +17,8 @@ import android.widget.TextView;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
+    private EditText email;
+    private EditText pass;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -24,8 +27,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         TextView starttext=(TextView) findViewById(R.id.txt_start);
         starttext.setText("Let's get started");
+        email=findViewById(R.id.tb_email);
+        pass=findViewById(R.id.tb_pass);
+        String email_str=getIntent().getStringExtra("val_email");
+        String pass_str=getIntent().getStringExtra("val_pass");
+        email.setText(email_str);
+        pass.setText(pass_str);
+
 
     }
+
+
+
+
 
     @Override
     protected void onStart() {
@@ -34,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent fereastra_noua=new Intent(MainActivity.this,MainActivity2.class);
+                Intent fereastra_noua=new Intent(MainActivity.this,MainActivity3.class);
                 startActivity(fereastra_noua);
             }
         });

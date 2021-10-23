@@ -6,4 +6,9 @@
     <string name="txt_forgot">Forgot password?</string>
     <string name="btn_login">Log in</string>
     <string name="tb_passwordbun">Password</string>
+    <string name="btnRegister">Join Fitbit</string>
+    <string name="cbtermspolicy">I agree to the Fitbit Terms of Service. Please also read the Privacy Policy, including the Cookie Use statement</string>
+    <string name="cblaws">I agree to the transfer of my personal data to the United States and other countries with different data protection laws. Learn more</string>
+    <string name="cbupdate">Keep me updated about Fitbit products, news and promotions</string>
+    <string name="btn_next">Next</string>
 </resources>

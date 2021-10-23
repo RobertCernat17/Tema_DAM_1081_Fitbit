@@ -30,8 +30,7 @@
         android:ems="10"
 
 
-        android:hint="Email"
-        android:text="@string/tb_email"
+        android:hint="@string/tb_email"
         android:textColor="#A9F1F9"
         android:textColorHint="#A9F1F9"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,10 +45,9 @@
         android:background="@color/casute"
         android:ems="10"
 
-        android:hint="Password"
+        android:hint="@string/tb_passwordbun"
 
         android:minHeight="48dp"
-        android:text="@string/tb_passwordbun"
         android:textColor="#A9F1F9"
         android:textColorHint="#A9F1F9"
         app:layout_constraintStart_toStartOf="parent"

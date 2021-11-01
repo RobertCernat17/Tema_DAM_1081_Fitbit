@@ -54,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tb_pass" />
 
     <Button
-        android:id="@+id/btn_log"
+        android:id="@+id/btn_log1"
         android:layout_width="337dp"
         android:layout_height="49dp"
         android:layout_marginTop="32dp"

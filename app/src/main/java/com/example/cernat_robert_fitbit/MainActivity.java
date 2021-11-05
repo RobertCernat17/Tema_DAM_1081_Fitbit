@@ -45,16 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Button btn=findViewById(R.id.btn_log1);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent fereastra_noua=new Intent(MainActivity.this,MainActivity3.class);
-                startActivity(fereastra_noua);
-            }
-        });
-    }
+
+
 }

@@ -2,9 +2,9 @@ package com.example.cernat_robert_fitbit;
 
 public class Produs {
     private String nume;
-    private Integer img_id;
+    private String img_id;
 
-    public Produs(String nume, Integer img_id) {
+    public Produs(String nume, String img_id) {
         this.nume = nume;
         this.img_id = img_id;
     }
@@ -17,12 +17,19 @@ public class Produs {
         this.nume = nume;
     }
 
-    public Integer getImg_id() {
+    public String getImg_id() {
         return img_id;
     }
 
-    public void setImg_id(Integer img_id) {
+    public void setImg_id(String img_id) {
         this.img_id = img_id;
     }
 
+    @Override
+    public String toString() {
+        return "Produs{" +
+                "nume='" + nume + '\'' +
+                ", img_id='" + img_id + '\'' +
+                '}';
+    }
 }

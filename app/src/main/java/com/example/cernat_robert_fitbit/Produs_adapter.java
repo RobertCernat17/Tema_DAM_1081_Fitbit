@@ -8,6 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class Produs_adapter extends BaseAdapter {
@@ -34,7 +37,10 @@ public class Produs_adapter extends BaseAdapter {
         ImageView img=item_view.findViewById(R.id.img_prod);
         Produs prd=lista.get(position);
         t_nume.setText(prd.getNume());
-        img.setImageResource(prd.getImg_id());
+            if(prd.getImg_id().length()<15)
+        img.setImageResource(Integer.parseInt(prd.getImg_id()));
+            else
+                Picasso.get().load(prd.getImg_id()).placeholder(R.drawable.placeholder).into(img);
 
         return item_view;
     }

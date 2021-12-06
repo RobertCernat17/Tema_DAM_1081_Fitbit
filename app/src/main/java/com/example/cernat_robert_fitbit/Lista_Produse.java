@@ -18,6 +18,19 @@ public class Lista_Produse extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_produse);
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                DetaliiProdusDAO detaliiProdusDAO = Database.getInstance(Lista_Produse.this).getDataBase().detaliiProdusDAO();
+                List<DetaliiProdus>lista_detalii=getDetalii();
+
+                for(int i=0;i<lista_detalii.size();i++) {
+
+                    detaliiProdusDAO.insert(lista_detalii.get(i));
+                }
+            }
+        });
+        thread.start();
 
         ListView lista = findViewById(R.id.list_view);
         List<Produs>produse=get_produse();
@@ -69,6 +82,14 @@ public class Lista_Produse extends AppCompatActivity {
 
     }
 
+    public List<DetaliiProdus>getDetalii(){
+        DetaliiProdus d1=new DetaliiProdus("Versa3","smartwatch",550.00,"3x5","violet",300.00);
+        DetaliiProdus d2=new DetaliiProdus("Charge5","Tracker",250.00,"1x6","negru",350.00);
+        List<DetaliiProdus>lista=new ArrayList<>();
+        lista.add(d1);
+        lista.add(d2);
+        return lista;
+    }
     private List<Produs> get_produse() {
         List<Produs> lista = new ArrayList<>();
         lista.add(new Produs("Ace 3 Black ", String.valueOf(R.drawable.ace3_black_device3qt)));

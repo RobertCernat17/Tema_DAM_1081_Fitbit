@@ -9,6 +9,12 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,14 +29,44 @@ public class Lista_Produse extends AppCompatActivity {
             public void run() {
                 DetaliiProdusDAO detaliiProdusDAO = Database.getInstance(Lista_Produse.this).getDataBase().detaliiProdusDAO();
                 List<DetaliiProdus>lista_detalii=getDetalii();
-
+                detaliiProdusDAO.nukeTable();
                 for(int i=0;i<lista_detalii.size();i++) {
 
                     detaliiProdusDAO.insert(lista_detalii.get(i));
                 }
+
+
             }
         });
+        Log.d("asa","vf");
         thread.start();
+
+        Button btn_FB=findViewById(R.id.btn_firebase);
+        btn_FB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Thread thread2 = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        DetaliiProdusDAO detaliiProdusDAO = Database.getInstance(Lista_Produse.this).getDataBase().detaliiProdusDAO();
+                        List<DetaliiProdus>lista_detalii2 = detaliiProdusDAO.getAll();
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference myRef = database.getReference("Detalii Produse");
+                        for (int i=0;i<lista_detalii2.size();i++)
+                        {
+                            int j=i;
+                            myRef.child(Integer.toString(j)).setValue(lista_detalii2.get(j).toString());
+                        }
+
+                    }
+                });
+                thread2.start();
+                Toast.makeText(Lista_Produse.this,"Adaugat si citit cu succes!",Toast.LENGTH_LONG).show();
+                citiredinBDFB();
+            }
+        });
+
 
         ListView lista = findViewById(R.id.list_view);
         List<Produs>produse=get_produse();
@@ -80,6 +116,7 @@ public class Lista_Produse extends AppCompatActivity {
             }
         });
 
+
     }
 
     public List<DetaliiProdus>getDetalii(){
@@ -128,5 +165,27 @@ public class Lista_Produse extends AppCompatActivity {
         lista.add(new Produs("Woven Rosewood Dramatic ", String.valueOf(R.drawable.woven_rosewood_dramatic)));
         return lista;
 
+    }
+    private void citiredinBDFB() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Detalii Produse");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
+                    String value = dataSnapshot1.getValue(String.class);
+                    Log.d("read", "Value is: " + value);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("fail", "Failed to read value.", error.toException());
+            }
+        });
     }
 }

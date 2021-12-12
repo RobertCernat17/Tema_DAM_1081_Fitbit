@@ -20,4 +20,6 @@ public interface DetaliiProdusDAO {
     @Query("Select * from detaliiprodus")
     public List<DetaliiProdus>getAll();
 
+    @Query("DELETE FROM detaliiprodus")
+    public void nukeTable();
 }
